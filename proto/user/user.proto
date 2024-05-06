@@ -6,7 +6,7 @@ package auth;
 
 option go_package = "github.com/tumbleweedd/auth_service_proto/proto/auth";
 
-service User {
+service UserService {
   rpc Create(CreateUserRequest) returns (CreateUserResponse) {}
   rpc Update(UpdateUserRequest) returns (UpdateUserResponse) {}
   rpc Delete(DeleteUserRequest) returns (google.protobuf.Empty) {}
