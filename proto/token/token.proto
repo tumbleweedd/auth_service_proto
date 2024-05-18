@@ -8,7 +8,7 @@ option go_package = "github.com/tumbleweedd/auth_service_proto/proto/user";
 
 service TokenService {
   rpc Login(LoginRequest) returns (LoginResponse) {}
-  rpc Logout(LogoutRequest) returns (LoginResponse) {}
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {}
   rpc Refresh(RefreshRequest) returns (RefreshResponse) {}
   rpc Validate(ValidateRequest) returns (ValidateResponse) {}
 }

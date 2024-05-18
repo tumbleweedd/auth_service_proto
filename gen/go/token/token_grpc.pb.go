@@ -30,7 +30,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TokenServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	Refresh(ctx context.Context, in *RefreshRequest, opts ...grpc.CallOption) (*RefreshResponse, error)
 	Validate(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error)
 }
@@ -52,8 +52,8 @@ func (c *tokenServiceClient) Login(ctx context.Context, in *LoginRequest, opts .
 	return out, nil
 }
 
-func (c *tokenServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
-	out := new(LoginResponse)
+func (c *tokenServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+	out := new(LogoutResponse)
 	err := c.cc.Invoke(ctx, TokenService_Logout_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func (c *tokenServiceClient) Validate(ctx context.Context, in *ValidateRequest, 
 // for forward compatibility
 type TokenServiceServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	Logout(context.Context, *LogoutRequest) (*LoginResponse, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error)
 	Validate(context.Context, *ValidateRequest) (*ValidateResponse, error)
 	mustEmbedUnimplementedTokenServiceServer()
@@ -97,7 +97,7 @@ type UnimplementedTokenServiceServer struct {
 func (UnimplementedTokenServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedTokenServiceServer) Logout(context.Context, *LogoutRequest) (*LoginResponse, error) {
+func (UnimplementedTokenServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedTokenServiceServer) Refresh(context.Context, *RefreshRequest) (*RefreshResponse, error) {

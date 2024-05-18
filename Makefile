@@ -19,7 +19,7 @@ deps:
 
 # Generate Go files from proto files
 .PHONY: gen-proto
-gen-proto: deps
+gen-proto:
 	mkdir -p $(GO_OUT_DIR)
 	protoc -I $(PROTO_DIR) $(TOKEN_PROTO_FILES) $(USER_PROTO_FILES) $(PROTOC_GEN_GO) $(PROTOC_GEN_GO_GRPC)
 
